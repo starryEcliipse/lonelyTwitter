@@ -54,6 +54,11 @@ public class LonelyTwitterActivity extends Activity {
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 				R.layout.list_item, tweets);
 		oldTweetsList.setAdapter(adapter);
+
+		Tweet tweet = new NormalTweet("Hello");
+		tweet.addMood(new Happy());
+		tweet.addMood(new Sad());
+
 	}
 
 	private String[] loadFromFile() {
