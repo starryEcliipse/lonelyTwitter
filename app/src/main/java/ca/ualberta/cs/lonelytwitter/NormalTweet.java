@@ -21,3 +21,4 @@ public class NormalTweet extends Tweet {
         return Boolean.FALSE;
     }
 }
+
