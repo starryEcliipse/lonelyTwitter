@@ -7,9 +7,9 @@ import java.util.Date;
  */
 
 public interface Tweetable {
-    
+
     //Method declarations
     String getMessage();
-    Date getDate();
+    Date getDate();  
 
 }
