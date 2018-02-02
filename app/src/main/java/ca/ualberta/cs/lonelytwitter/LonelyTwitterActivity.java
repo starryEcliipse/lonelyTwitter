@@ -38,15 +38,17 @@ public class LonelyTwitterActivity extends Activity {
 	
 	/** Called when the activity is first created. */
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) { //what you want your activity to do immediately once its created
 		super.onCreate(savedInstanceState);
 		Log.i("LifeCycle ---->", "onCreate is called");
-		setContentView(R.layout.main);
+		setContentView(R.layout.main); //this is where you define which layout this shows
 
-		bodyText = (EditText) findViewById(R.id.body);
+
+		//widgets id.body connects to body in the main.xml
+		bodyText = (EditText) findViewById(R.id.body); //findView gets the part in the field
 		Button saveButton = (Button) findViewById(R.id.save);
 		//Create clear button object
-		Button clearButton = (Button) findViewById(R.id.clear);
+		Button clearButton = (Button) findViewById(R.id.clear); //declare clear button by id
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
 
 		
@@ -64,13 +66,13 @@ public class LonelyTwitterActivity extends Activity {
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				setResult(RESULT_OK);
-				String text = bodyText.getText().toString();
+				setResult(RESULT_OK); //every onclicklistener needs this
+				String text = bodyText.getText().toString(); //get this from widget and turn it into the string
 
 				//Added this in the lab
-				Tweet tweet = new NormalTweet(text);
+				Tweet tweet = new NormalTweet(text); //This is Tweet.java, it does the default constructor which creates its own date
 				tweetList.add(tweet);
-				adapter.notifyDataSetChanged();
+				adapter.notifyDataSetChanged(); //an adapter connects the list to the view, if you want to display your list you need an adapter
 
 				saveInFile(); //Removed parameters in lab
 
@@ -86,7 +88,8 @@ public class LonelyTwitterActivity extends Activity {
 		super.onStart();
 		Log.i("LifeCycle --->", "onStart is called");
 		loadFromFile();
-		adapter = new ArrayAdapter<Tweet>( this, R.layout.list_item, tweetList);
+		adapter = new ArrayAdapter<Tweet>( this, R.layout.list_item, tweetList); //This does not want your main view it just wants a list view aka list_item.xml this is a separate
+		//view that you create that is a blank text view. Your list should show up in main.xml
 
 		oldTweetsList.setAdapter(adapter);
 
@@ -126,6 +129,7 @@ public class LonelyTwitterActivity extends Activity {
 			Gson gson = new Gson();
 			gson.toJson(tweetList, out);
 			out.flush(); //clears buffer
+
 
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
