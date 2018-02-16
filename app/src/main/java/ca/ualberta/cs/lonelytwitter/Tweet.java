@@ -4,7 +4,7 @@ import java.util.Date;
 
 import io.searchbox.annotations.JestId;
 
-public abstract class Tweet implements Tweetable, Comparable<Tweet> {
+public abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
 
@@ -60,8 +60,4 @@ public abstract class Tweet implements Tweetable, Comparable<Tweet> {
         return date;
     }
 
-    @Override
-    public int compareTo(Tweet tweet){
-        return getDate().compareTo(tweet.getDate());
-    }
 }
