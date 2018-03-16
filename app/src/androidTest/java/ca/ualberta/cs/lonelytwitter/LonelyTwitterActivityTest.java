@@ -7,8 +7,6 @@ import android.widget.ListView;
 
 import com.robotium.solo.Solo;
 
-import junit.framework.TestCase;
-
 public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2 {
 
     private Solo solo;
@@ -31,7 +29,8 @@ public class LonelyTwitterActivityTest extends ActivityInstrumentationTestCase2 
         solo.enterText((EditText) solo.getView(R.id.body), "Test Tweet!"); //enter the text
         solo.clickOnButton("Save"); //save the text
         solo.clearEditText((EditText) solo.getView(R.id.body)); //clear the text
-        assertTrue(solo.waitForText("Test Tweet!")); //make sure the text has been saved into the listview
+        assertTrue(solo.waitForText("Test Tweet!")); //make sure the text has been saved into the listView
+        //Fixed typo
         solo.clickOnButton("Clear");
         assertFalse(solo.waitForText("Test Tweet!", 1, 3000)); //make sure the text has been cleared from the listview
         //looking for 1 instance of "Test Tweet!" and will only wait for 3000 seconds
